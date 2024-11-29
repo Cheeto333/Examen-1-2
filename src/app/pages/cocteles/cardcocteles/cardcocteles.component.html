@@ -1,0 +1,46 @@
+<div class="row mb-3 g-3">
+    <ng-container *ngIf="cocktailsAll && cocktailsAll.drinks && cocktailsAll.drinks.length > 0; else noCocktails">
+        <div class="col-3" *ngFor="let cocktail of cocktailsAll.drinks">
+            <div class="card fixed-card">
+                <!-- Loader -->
+                <div *ngIf="!imagenLoaded">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="shape-rendering: auto; display: block; background: rgb(255, 255, 255);" width="205" height="205">
+                        <g>
+                            <path stroke="none" fill="#e15b64" d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50">
+                                <animateTransform values="0 50 51;360 50 51" keyTimes="0;1" repeatCount="indefinite" dur="1s" type="rotate" attributeName="transform"></animateTransform>
+                            </path>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- Imagen con retraso -->
+                 <img
+                    [src]="cocktail.strDrinkThumb"
+                    class="card-img-top fixed-img"
+                    alt="{{cocktail.strDrink}}"
+                    loading="lazy"
+                    (load)="imagenLoaded = true"
+                >
+
+
+                <div class="card-body fixed-body">
+                    <h5 class="card-title">{{cocktail.strDrink}}</h5>
+                    <p class="card-text">{{cocktail.strCategory}}</p> <!-- Ajusta según los datos que tengas -->
+                    <button class="btn btn-outline-primary" (click)="openModal(cocktail)">Más información</button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #noCocktails>
+        <div class="col-12">
+            <div class="alert alert-warning" role="alert">
+                No se encontraron cócteles.
+            </div>
+        </div>
+    </ng-template>
+</div>
+
+<!-- Modal de cócteles -->
+<modal-cocteles></modal-cocteles>
+

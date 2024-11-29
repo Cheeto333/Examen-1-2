@@ -1,0 +1,43 @@
+<div class="row mb-3 g-3">
+    <ng-container *ngIf="charactersAll && charactersAll.items && charactersAll.items.length > 0; else noCharacters">
+        <div class="col-3" *ngFor="let character of charactersAll.items">
+            <div class="card fixed-card">
+                <!-- Loader -->
+                <div *ngIf="!imagenLoaded">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="shape-rendering: auto; display: block; background: rgb(255, 255, 255);" width="205" height="205">
+                        <g>
+                            <path stroke="none" fill="#e15b64" d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50">
+                                <animateTransform values="0 50 51;360 50 51" keyTimes="0;1" repeatCount="indefinite" dur="1s" type="rotate" attributeName="transform"></animateTransform>
+                            </path>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- Imagen con retraso -->
+                <img
+                    [src]="character.image"
+                    class="card-img-top fixed-img"
+                    alt="{{ character.name }}"
+                    loading="lazy"
+                    (load)="imagenLoaded = true"
+                >
+
+                <div class="card-body fixed-body">
+                    <h5 class="card-title">{{ character.name }}</h5>
+                    <p class="card-text">Raza: {{ character.race }}</p>
+                    <button class="btn btn-outline-primary" (click)="openModal(character)">Más información</button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #noCharacters>
+        <div class="col-12">
+            <div class="alert alert-warning" role="alert">
+                No se encontraron personajes.
+            </div>
+        </div>
+    </ng-template>
+</div>
+
+<dbz-modal />

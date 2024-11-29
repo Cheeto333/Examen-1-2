@@ -1,0 +1,31 @@
+<button class="btn btn-primary" type="button" (click)="modal.open()">Agregar</button>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Título</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Completada</th>
+            <th scope="col">Fecha de Creación</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tarea of tareas?.tareas">
+            <td>{{ tarea.titulo }}</td>
+            <td>{{ tarea.descripcion }}</td>
+            <td>
+                <span [class]="tarea.completada ? 'text-success' : 'text-danger'">
+                    {{ tarea.completada ? 'Sí' : 'No' }}
+                </span>
+            </td>
+            <td>{{ tarea.fechaCreacion | date: 'short' }}</td>
+            <td>
+                <button class="btn btn-primary btn-sm" (click)="modal2.open(tarea)">Editar</button>
+                <button class="btn btn-danger btn-sm" >Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<app-modal-agregar (tareaAgregada)="actualizar()"></app-modal-agregar>
+<app-modal-editar (tareaEditada)="actualizar()"></app-modal-editar>

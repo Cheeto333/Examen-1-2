@@ -1,0 +1,35 @@
+<div class="modal fade" #modalElement tabindex="-1" aria-labelledby="coctelModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="coctelModalLabel">Detalles de {{coctel.strDrink | titlecase}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6 text-center">
+              <img [src]="coctel.strDrinkThumb || '#'" [alt]="coctel.strDrink" class="img-fluid mb-3">
+              <p><strong>ID:</strong> {{coctel.idDrink}}</p>
+              <p><strong>Categoría:</strong> {{coctel.strCategory | titlecase}}</p>
+              <p><strong>Vaso:</strong> {{coctel.strGlass | titlecase}}</p>
+            </div>
+            <div class="col-md-6">
+                <h6>Ingrediente principal:</h6>
+                <p>{{coctel.strIngredient1}}</p>
+                <h6>Contiene Alcohol:</h6>
+                <p>{{coctel.strAlcoholic}}</p>
+                <h6>Vaso:</h6>
+                <p>{{coctel.strGlass}}</p>
+                <h6>Instrucciones:</h6>
+                <p>{{coctel.strInstructions}}</p>
+                
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

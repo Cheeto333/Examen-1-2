@@ -1,0 +1,35 @@
+<div class="modal fade" #modalElement id="addTareaModal" tabindex="-1" aria-labelledby="addTareaModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addTareaModalLabel">Agregar Tarea</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulario con ngForm -->
+                <form (ngSubmit)="agregarTarea(form)" #form="ngForm">
+                    <div class="mb-3">
+                        <label for="titulo" class="form-label">Título</label>
+                        <input type="text" class="form-control" id="titulo" required [(ngModel)]="nuevaTarea.titulo"
+                            name="titulo" #titulo="ngModel">
+                        <div *ngIf="titulo?.invalid && titulo?.touched" class="text-danger">El título es obligatorio.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="descripcion" required [(ngModel)]="nuevaTarea.descripcion"
+                            name="descripcion" #descripcion="ngModel"></textarea>
+                        <div *ngIf="descripcion?.invalid && descripcion?.touched" class="text-danger">La descripción es
+                            obligatoria.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="completada" class="form-label">Completada</label>
+                        <input type="checkbox" id="completada" [(ngModel)]="nuevaTarea.completada" name="completada">
+                    </div>
+                    <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Agregar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

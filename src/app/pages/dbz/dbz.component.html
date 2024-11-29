@@ -1,0 +1,9 @@
+<div class="row">
+    <dbz-search (eventSearch2)="searchCharacter($event)" />
+</div>
+<app-paginacion (eventNewPokemon)="setNewCharacter($event)"></app-paginacion>
+<app-carddbz [charactersAll]="charactersResponse" />
+<app-paginacion (eventNewPokemon)="setNewCharacter($event)"></app-paginacion>
+
+
+

@@ -1,0 +1,7 @@
+<div class="row">
+    <cocktail-search (eventSearch)="searchCocktail($event)" />
+</div>
+<cocktail-paginacion (eventNewCocktails)="setNewCocktail($event)"/>
+<cocktail-card [cocktailsAll]="cocktails" />
+
+<cocktail-paginacion (eventNewCocktails)="setNewCocktail($event)"/>
