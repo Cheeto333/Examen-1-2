@@ -21,7 +21,7 @@
             <td>{{ tarea.fechaCreacion | date: 'short' }}</td>
             <td>
                 <button class="btn btn-primary btn-sm" (click)="modal2.open(tarea)">Editar</button>
-                <button class="btn btn-danger btn-sm" >Eliminar</button>
+                <button class="btn btn-danger btn-sm" (click)="eliminar(tarea._id!)">Eliminar</button>
             </td>
         </tr>
     </tbody>
